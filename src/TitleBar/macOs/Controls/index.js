@@ -25,7 +25,11 @@ class Controls extends Component {
     onCloseClick: PropTypes.func,
     onMinimizeClick: PropTypes.func,
     onMaximizeClick: PropTypes.func,
-    onResizeClick: PropTypes.func
+    onResizeClick: PropTypes.func,
+    disableClose: PropTypes.bool,
+    disableMinimize: PropTypes.bool,
+    disableResize: PropTypes.bool,
+    disableFullscreen: PropTypes.bool
   };
 
   constructor() {
@@ -46,11 +50,13 @@ class Controls extends Component {
           onClick={this.props.onCloseClick}
           showIcon={this.state.isOver}
           isWindowFocused={this.props.isWindowFocused}
+          disabled={this.props.disableClose}
         />
         <Minimize
           onClick={this.props.onMinimizeClick}
           showIcon={this.state.isOver}
           isWindowFocused={this.props.isWindowFocused}
+          disabled={this.props.disableMinimize}
         />
         <Resize
           isFullscreen={this.props.isFullscreen}
@@ -58,6 +64,8 @@ class Controls extends Component {
           onMaximizeClick={this.props.onMaximizeClick}
           showIcon={this.state.isOver}
           isWindowFocused={this.props.isWindowFocused}
+          disabled={this.props.disableResize}
+          disableFullscreen={this.props.disableFullscreen}
         />
       </div>
     );
